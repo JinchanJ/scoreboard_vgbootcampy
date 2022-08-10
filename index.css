@@ -35,6 +35,7 @@ body {
   position: absolute;
   display: flex;
   box-sizing: border-box;
+  flex-direction: column;
   align-items: center;
   width: 496px;
   height: 91px;
@@ -47,15 +48,11 @@ body {
 .p1.container {
   background-position: 100% 0;
   left: 380px;
-  flex-direction: column;
-  box-sizing: border-box;
 }
 
 .p2.container {
   background-position: 0 0;
   right: 380px;
-  flex-direction: column;
-  box-sizing: border-box;
 }
 
 .inner_container {
@@ -225,15 +222,14 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: absolute;
 }
 
 .p1 .losers {
-  position: absolute;
   right: 0;
 }
 
 .p2 .losers {
-  position: absolute;
   left: 0;
 }
 
