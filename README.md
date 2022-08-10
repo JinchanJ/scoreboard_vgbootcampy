@@ -1,4 +1,4 @@
-# New Overlay:
+# New Overlay (Inspired by Double Down Overlay of VGBC):
 - Download the zip file and open it.
 - Move the scoreboard_new file (probably named scoreboard_new-main) into the /layout folder of TSH where all the other scoreboard files are located.
 - Go to OBS and add a new Browser.
