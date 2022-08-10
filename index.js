@@ -69,13 +69,6 @@
           );
 
           SetInnerHtml(
-            $(`.p${t + 1}.container .flagstate`),
-            player.state.asset
-              ? `<div class='flag' style='background-image: url(../../${player.state.asset})'></div>`
-              : ""
-          );
-
-          SetInnerHtml(
             $(`.p${t + 1}.twitter`),
             player.twitter
               ? `<span class="twitter_logo"></span>${
