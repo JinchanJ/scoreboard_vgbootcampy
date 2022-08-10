@@ -15,4 +15,4 @@
 - Adjust the size of the player cams and move them so they fit nicely within their borders.
 
 # Enjoy!
-- You can edit the CSS file to change the colors, reposition the containers, etc.
+- You can edit the CSS file to change the color and position of words and containers.
