@@ -14,4 +14,5 @@
 - Add an Image Mask/Blend filter to the player cam (1280x720) and select CameraMask.png as its path to round the corners of the player cam.
 - Adjust the size of the player cams and move them so they fit nicely within their borders.
 
-ENJOY!
+# Enjoy!
+- You can edit the CSS file to change the colors, reposition the containers, etc.
