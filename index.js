@@ -1,5 +1,5 @@
 // How long it takes to update the information, in milliseconds. 10000 milliseconds = 10 seconds.
-const ROTATION_INTERVAL = 10000;
+const ROTATION_INTERVAL = 5000;
 
 const overlayState = {
   matchModeIndex: 0,
@@ -215,11 +215,11 @@ function getMatchDisplayContent(score) {
   return { content: selectedContent, modeUsed: selectedMode };
 }
 
-const setName = async (selector, team, name, suffix = "") => {
+const setName = async (selector, team, name) => {
   SetInnerHtml($(selector), `
     <span>
       <span class="sponsor">${team ? team.replace(/\s*[\|\/\\]\s*/g, ' ') : ""}</span>
-      ${name ? await Transcript(name) : ""} ${suffix}
+      ${name ? await Transcript(name) : ""}
     </span>
   `);
 };
@@ -388,57 +388,56 @@ window.resetIntervals = () => {
   overlayState.intervalID = setInterval(rotate, ROTATION_INTERVAL);
 };
 
-  const DisplayEntityName = async (t, nameOrPlayer, isTeam = false) => {
-    const selector = `.p${t + 1}.container .name`;
-    const bothLosers = overlayState.bothLosers;
-    const neitherLoser = overlayState.neitherLoser;
+const DisplayEntityName = async (t, nameOrPlayer, isTeam = false) => {
+  const selector = `.p${t + 1}.container .name`;
+  const bothLosers = overlayState.bothLosers;
+  const neitherLoser = overlayState.neitherLoser;
+
+  if (isTeam) {
+    const teamName = nameOrPlayer;
   
-    if (isTeam) {
-      if (isTeam) {
-        const teamName = nameOrPlayer;
-      
-        const normalizeTeamName = (name) =>
-          name?.toLowerCase().replace(/\s*[\|\/\\]\s*/g, ' ').trim();
-      
-        const storedRaw = localStorage.getItem("teamNameInWinners") || "";
-        const teamNameInWinners = normalizeTeamName(storedRaw);
-        const normalizedCurrentName = normalizeTeamName(teamName);
-      
-        console.log("Comparing team names:", {
-          storedRaw,
-          displayedRaw: teamName,
-          storedNormalized: teamNameInWinners,
-          displayedNormalized: normalizedCurrentName,
-        });
-      
-        const getSuffix = (normalizedCurrent, losers) => {
-          if (bothLosers) {
-            return teamNameInWinners === normalizedCurrent ? "(WL)" : "(L)";
-          } else if (neitherLoser) {
-            return "";
-          } else {
-            return losers ? "(L)" : "(W)";
-          }
-        };
-      
-        const suffix = getSuffix(normalizedCurrentName, t === 0 ? overlayState.team1Losers : overlayState.team2Losers);
-        SetInnerHtml($(selector), `<span>${teamName} ${suffix}</span>`);
+    const normalizeTeamName = (name) =>
+      name?.toLowerCase().replace(/\s*[\|\/\\]\s*/g, ' ').trim();
+  
+    const storedRaw = localStorage.getItem("teamNameInWinners") || "";
+    const teamNameInWinners = normalizeTeamName(storedRaw);
+    const normalizedCurrentName = normalizeTeamName(teamName);
+  
+    console.log("Comparing team names:", {
+      storedRaw,
+      displayedRaw: teamName,
+      storedNormalized: teamNameInWinners,
+      displayedNormalized: normalizedCurrentName,
+    });
+  
+    const getSuffix = (normalizedCurrent, losers) => {
+      if (bothLosers) {
+        return teamNameInWinners === normalizedCurrent ? "WL" : "L";
+      } else if (neitherLoser) {
+        return "";
+      } else {
+        return losers ? "L" : "W";
       }
-      
-    } else {
-      const player = nameOrPlayer;
-      const playerInWinners = JSON.parse(localStorage.getItem("playerInWinners") || "{}");
-  
-      const getSuffix = (p, losers) => {
-        if (bothLosers) {
-          return playerInWinners.name?.toLowerCase() === p.name?.toLowerCase() ? "(WL)" : "(L)";
-        } else if (neitherLoser) {
-          return "";
-        } else {
-          return losers ? "(L)" : "(W)";
-        }
-      };
-  
-      await setName(selector, player.team, player.name, getSuffix(player, t === 0 ? overlayState.team1Losers : overlayState.team2Losers));
-    }
-  };
+    };
+    const suffix = getSuffix(normalizedCurrentName, t === 0 ? overlayState.team1Losers : overlayState.team2Losers);
+    SetInnerHtml($(selector), `<span>${teamName}</span>`);
+    SetInnerHtml($(`.p${t + 1} .losers`), suffix);
+  } else {
+    const player = nameOrPlayer;
+    const playerInWinners = JSON.parse(localStorage.getItem("playerInWinners") || "{}");
+
+    const getSuffix = (p, losers) => {
+      if (bothLosers) {
+        return playerInWinners.name?.toLowerCase() === p.name?.toLowerCase() ? "WL" : "L";
+      } else if (neitherLoser) {
+        return "";
+      } else {
+        return losers ? "L" : "W";
+      }
+    };
+
+    await setName(selector, player.team, player.name);
+
+    SetInnerHtml($(`.p${t + 1} .losers`), getSuffix(player, t === 0 ? overlayState.team1Losers : overlayState.team2Losers));
+  }
+};

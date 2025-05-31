@@ -13,6 +13,24 @@ body {
   letter-spacing: 1;
 }
 
+.anim_container_outer {
+  position: absolute;
+  overflow: hidden;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1326px;
+  height: 1080px;
+}
+
+.anim_container_inner {
+  position: absolute;
+  overflow: hidden;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1920px;
+  height: 1080px;
+}
+
 .logo {
   position: absolute;
   top: 13px;
@@ -175,6 +193,11 @@ body {
 
 .p2 .losers_container {
   left: 0px;
+}
+
+.losers {
+  font-size: 25px;
+  color: black;
 }
 
 .match {
