@@ -1,6 +1,6 @@
 body {
-  font-family: "Montserrat", "M Plus 1p", sans-serif;
-  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
   opacity: 0;
   overflow: hidden;
   margin: 0;
@@ -13,159 +13,13 @@ body {
   letter-spacing: 1;
 }
 
-.anim_container_outer {
-  position: absolute;
-  overflow: hidden;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1920px;
-  height: 1080px;
-}
-
-.anim_container_inner {
-  position: absolute;
-  overflow: hidden;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1920px;
-  height: 1080px;
-}
-
-.container {
-  position: absolute;
-  display: flex;
-  box-sizing: border-box;
-  flex-direction: column;
-  align-items: center;
-  width: 496px;
-  height: 91px;
-  top: 14px;
-  background: #ffefdb;
-  border-radius: 12px;
-  padding-top: 4px;
-}
-
-.p1.container {
-  background-position: 100% 0;
-  left: 380px;
-}
-
-.p2.container {
-  background-position: 0 0;
-  right: 380px;
-}
-
-.tournament_container {
-  position: absolute;
-  border-radius: 8px;
-  left: 67px;
-  top: 51px;
-  width: 246px;
-  height: 54px;
-  padding-top: 0px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  overflow: hidden;
-  background: var(--bg-color);
-}
-
-.tournament_name {
-  color: white;
-  height: 100%;
-  font-size: 20px;
-  width: 216px;
-}
-
-.inner_container {
-  position: static;
-  width: 488px;
-  height: 53px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  overflow: hidden;
-  background: var(--bg-color);
-  margin-bottom: 16px;
-}
-
-.p1 .inner_container {
-  flex-direction: row;
-}
-
-.p2 .inner_container {
-  flex-direction: row-reverse;
-}
-
-.name {
-  display: flex;
-  width: 100%;
-  height: 53px;
-  font-size: 27px;
-  justify-content: center;
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0 12px;
-  flex-direction: column;
-  overflow: hidden;
-  color: white;
-}
-
-.twitter {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  width: 348px;
-  height: 43px;
-  border-radius: 8px;
-  color: white;
-  font-size: 20px;
-  text-align: center;
-  justify-content: center;
-  box-sizing: border-box;
-  top: 821px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.p1.twitter {
-  left: 25px;
-  background: var(--p1-score-bg-color);
-}
-
-.p2.twitter {
-  right: 25px;
-  background: var(--p2-score-bg-color);
-}
-
-.twitter_logo {
-  -webkit-mask-image: url(./twitter.svg);
-  -webkit-mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-
-  /* Color of the bird logo */
-  background: white;
-  /* Twitter Blue */
-  /* background: #1da1f2; */
-  width: 25px;
-  height: 25px;
-  margin-right: 3px;
-}
-
 .logo {
   position: absolute;
   top: 13px;
   left: 50%;
   transform: translateX(-50%);
-  width: 91px;
-  height: 91px;
+  width: 89px;
+  height: 89px;
   background-image: url("../logo.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -174,92 +28,72 @@ body {
   z-index: 9;
 }
 
-/* Name a PNG image tournament_logo.png to have it be displayed at the bottom center */
-.tournament_logo {
+.tournament_container {
   position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 268px;
-  height: 162px;
-  background-image: url("./tournament_logo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: var(--border-radius);
-  z-index: 9;
+  width: 247px;
+  height: 55px;
+  top: 47px;
+  left: 26px;
+  background-color: var(--bg-color);
+  background: white;
+  border-radius: 10px;
 }
 
-.phase_container {
+.container {
+  position: absolute;
+  width: 494px;
+  height: 89px;
+  top: 13px;
+  background-color: rgb(250, 241, 224);
+  /* background-color: black; */
+
   display: flex;
-  justify-content: center;
+  flex-direction: column-reverse;
   align-items: center;
-  flex-direction: row-reverse;
-  width: 100%;
-  height: 1%;
+
+  border-radius: 10px;
 }
 
-.match_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  width: 100%;
-  height: 1%;
+.p1.container {
+  left: 297px;
 }
 
-.losers_container {
-  position: relative;
-  display: flex;
+.p2.container {
+  right: 297px;
+}
+
+.inner_container {
   width: 486px;
-  height: 10px;
-}
-
-.match_container .losers_container {
-  flex-direction: row;
-  justify-content: end;
-}
-
-.phase_container .losers_container {
-  flex-direction: row-reverse;
-  justify-content: start;
-}
-
-.phase {
-  position: absolute;
-  width: 75%;
-  height: 1%;
-  color: var(--bg-color);
-  font-size: 20px;
-}
-
-.match {
-  position: absolute;
-  width: 75%;
-  height: 1%;
-  color: #18181b;
-  color: var(--bg-color);
-  font-size: 20px;
-}
-
-.losers {
-  display: flex;
-  width: 62px;
   height: 53px;
-  font-size: 23px;
-  color: var(--bg-color);
+  
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  background-color: var(--bg-color);
   overflow: hidden;
-  position: absolute;
+  border-radius: 6px;
 }
 
-.p1 .losers {
-  right: 0;
+.p1 .inner_container {
+  flex-direction: row-reverse;
 }
 
-.p2 .losers {
-  left: 0;
+.p1 .flagcountry .text_empty {
+  margin-left: 0px;
+}
+
+.p2 .flagcountry .text_empty {
+  margin-right: 0px;
+}
+
+.p1 .flagcountry:not(.text_empty) {
+  margin-left: 8px;
+}
+
+.p2 .flagcountry:not(.text_empty) {
+  margin-right: 8px;
 }
 
 .flags_container {
@@ -270,69 +104,170 @@ body {
 
 .flag {
   display: inline-block;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 44px;
-  height: 31px;
+  width: 47px;
+  height: 47px;
 }
 
-.p1 .flag {
-  margin-left: 12px;
+.name_container {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  padding: 0 8px;
 }
 
-.p2 .flag {
-  margin-right: 12px;
+.name {
+  font-size: 25px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.score_container {
+  width: 62px;
+  height: 100%;
+  background-color: green;
+}
+
+.p1 .score_container {
+  background-color: var(--p1-score-bg-color);
+}
+
+.p2 .score_container {
+  background-color: var(--p2-score-bg-color);
 }
 
 .score {
-  text-align: center;
-  width: 62px;
-  height: 53px;
   font-size: 35px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  overflow: hidden;
+  color: white;
 }
 
-.p1 .score {
-  color: white;
-  background: var(--p1-score-bg-color);
+.bottom_container {
+  position: relative;
+  width: 486px;
+  height: 32px;
+  /* background-color: pink; */
+  display: flex;
+  justify-content: center;
 }
 
-.p2 .score {
-  color: white;
-  background: var(--p2-score-bg-color);
+.bottom {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: black;
+  max-width: 362px;
+}
+
+.losers_container {
+  position: absolute;
+  width: 62px;
+  height: 32px;
+  /* background-color: blue; */
+
+  justify-content: center;
+  align-items: center;
+}
+
+.p1 .losers_container {
+  right: 0px;
+}
+
+.p2 .losers_container {
+  left: 0px;
+}
+
+.match {
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
 .sponsor {
-  margin-right: 10px;
+  /* background: #ffb403; */
 }
 
 .p1 .sponsor {
-  color: #ffb403;
+  background: var(--p1-score-bg-color);
 
   /* For gradient color */
-  /* background: INSERT LINEAR GRADIENT COLOR HERE; */
-  /* -webkit-background-clip: text; */
-  /* -webkit-text-fill-color: transparent; */
+  /* background: linear-gradient(
+    90deg,
+    var(--p1-score-bg-color) 0%,
+    var(--text-color) 200%
+  ); */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .p2 .sponsor {
-  color: #ffb403;
+  background: var(--p2-score-bg-color);
 
   /* For gradient color */
-  /* background: INSERT LINEAR GRADIENT COLOR HERE; */
-  /* -webkit-background-clip: text; */
-  /* -webkit-text-fill-color: transparent; */
+  /* background: linear-gradient(
+    90deg,
+    var(--p2-score-bg-color) 0%,
+    var(--text-color) 200%
+  ); */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.hidden {
-  opacity: 0%;
-  transition: opacity 0.5s;
+.twitter {
+  color: var(--text-color);
+  font-size: 18px;
+  /* font-size: 20px; */
+  overflow: hidden;
+  text-transform: uppercase;
 }
 
-.unhidden {
-  opacity: 100%;
-  transition: opacity 0.5s;
+.twitter_logo {
+  -webkit-mask-image: url(./x_twitter.png);
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+
+  background: white;
+  width: 25px;
+  height: 25px;
+}
+
+.twitter_container {
+  position: absolute;
+  width: 346px;
+  height: 43px;
+  bottom: 224px;
+  border-radius: 10px;
+}
+
+.p1.twitter_container {
+  left: 25px;
+  background-color: var(--p1-score-bg-color);
+}
+
+.p2.twitter_container {
+  right: 25px;
+  background-color: var(--p2-score-bg-color);
+}
+
+.camera_container {
+  position: absolute;
+  width: 346px;
+  height: 193px;
+  /* background-color: red; */
+  bottom: 14px;
+
+  box-sizing: border-box;
+  border-width: 3px;
+  border-color: white;
+  border-style: solid;
+
+  border-radius: 10px;
+}
+
+.p1.camera_container {
+  left: 25px;
+}
+
+.p2.camera_container {
+  right: 25px;
 }
