@@ -1,5 +1,5 @@
 // How long it takes to update the information, in milliseconds. 10000 milliseconds = 10 seconds.
-const ROTATION_INTERVAL = 5000;
+const ROTATION_INTERVAL = 10000;
 
 const overlayState = {
   matchModeIndex: 0,
@@ -83,6 +83,7 @@ LoadEverything().then(() => {
   
       if (team.color) {
         document.documentElement.style.setProperty(`--p${t + 1}-score-bg-color`, team.color);
+        UpdateColor(t);
       }
   
       const flagContainer = $(`.p${t + 1}.container .flagcountry`);
@@ -91,6 +92,12 @@ LoadEverything().then(() => {
         ? `<div class='flag' style="background-image: url('https://gepi.global-e.com/content/images/flags/${player.country.code.toLowerCase()}.png')"></div>`
         : "";
       SetInnerHtml(flagContainer, flagHtml);
+
+      if (showFlag) {
+        changeStylesheetRule(`.p${t + 1} .name_container`, "padding", "0 8px");
+      } else {
+        changeStylesheetRule(`.p${t + 1} .name_container`, "padding", "0 12px");
+      }
     });
   
     // === Twitter display hash tracking ===
@@ -168,7 +175,7 @@ LoadEverything().then(() => {
   
       const startingAnimation = gsap.timeline({ paused: false })
         .from([".logo"], { duration: 0.5, autoAlpha: 0, ease: "power2.inOut" })
-        .from([".anim_container_outer"], { duration: 1, width: "162px", ease: "power2.inOut" });
+        .from([".anim_container_outer"], { duration: 1, width: "338px", ease: "power2.inOut" });
   
       if (hasPlayer1Info && isTeam1Solo) {
         startingAnimation.from([".p1.twitter_container"], {
@@ -441,3 +448,98 @@ const DisplayEntityName = async (t, nameOrPlayer, isTeam = false) => {
     SetInnerHtml($(`.p${t + 1} .losers`), getSuffix(player, t === 0 ? overlayState.team1Losers : overlayState.team2Losers));
   }
 };
+
+function changeStylesheetRule(selector, property, value) {
+  let stylesheet = document.styleSheets[1];
+  // Make the strings lowercase
+  selector = selector.toLowerCase();
+  property = property.toLowerCase();
+  value = value.toLowerCase();
+
+  // Change it if it exists
+  for (var i = 0; i < stylesheet.cssRules.length; i++) {
+    var rule = stylesheet.cssRules[i];
+    if (rule.selectorText === selector) {
+      rule.style[property] = value;
+      return;
+    }
+  }
+
+  // Add it if it does not
+  stylesheet.insertRule(selector + " { " + property + ": " + value + "; }", 0);
+}
+
+async function UpdateColor(t) {
+
+  var divs = document.getElementsByClassName(`p${t + 1} container`);
+  var div = divs[0];
+
+  var score_container_element = div.querySelector(".score_container");
+  var score_element = score_container_element.querySelector(".score");
+
+  // Get the background color of the div
+  var color = window
+    .getComputedStyle(score_container_element, null)
+    .getPropertyValue("background-color");
+
+  var components = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+
+  if (components) {
+    // Extract the individual RGB components
+    var red = parseInt(components[1]);
+    var green = parseInt(components[2]);
+    var blue = parseInt(components[3]);
+
+    // Display the color
+    console.log("The background color of the div is: " + color);
+    console.log("Red: " + red);
+    console.log("Green: " + green);
+    console.log("Blue: " + blue);
+
+    var intensity = red * 0.299 + green * 0.587 + blue * 0.114;
+    console.log("The intensity is: " + intensity);
+
+    if (intensity > 142) {
+      console.log("Word should be black");
+
+      changeStylesheetRule(
+        `.p${t + 1} .score`,
+        "color",
+        "var(--bg-color)"
+      );
+
+      changeStylesheetRule(
+        `.p${t + 1} .twitter`,
+        "color",
+        "var(--bg-color)"
+      );
+
+      changeStylesheetRule(
+        `.p${t + 1} .twitter_logo`,
+        "background",
+        "var(--bg-color)"
+      );
+
+    } else {
+
+      changeStylesheetRule(
+        `.p${t + 1} .score`,
+        "color",
+        "var(--text-color)"
+      );
+
+      changeStylesheetRule(
+        `.p${t + 1} .twitter`,
+        "color",
+        "var(--text-color)"
+      );
+
+      changeStylesheetRule(
+        `.p${t + 1} .twitter_logo`,
+        "background",
+        "var(--text-color)"
+      );
+
+    } 
+  }
+}
