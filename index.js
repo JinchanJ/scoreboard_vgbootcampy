@@ -340,7 +340,6 @@ const lastPlayerContent = {};
 window.UpdateTwitter = async () => {
   forEachTeamPlayer(overlayState.data, (team, t, player) => {
     const twitterContainer = document.querySelector(`.p${t + 1}.twitter_container`);
-    const cameraContainer = document.querySelector(`.p${t + 1}.camera_container`);
     const contentEl = $(`.p${t + 1} .twitter`);
     const isSolo = Object.keys(team.player).length === 1;
     const playerFields = getPlayerDisplayFieldMap(player);
@@ -359,7 +358,6 @@ window.UpdateTwitter = async () => {
 
     // ✅ Fade in if solo w/ info, fade out otherwise
     toggleVisibility(twitterContainer, visible);
-    toggleVisibility(cameraContainer, isSolo);
   });
 };
 

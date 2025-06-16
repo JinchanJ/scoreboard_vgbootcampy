@@ -67,7 +67,7 @@ body {
   background-color: rgb(250, 241, 224);
 
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
 
   border-radius: 10px;
@@ -84,6 +84,7 @@ body {
 .inner_container {
   width: 486px;
   height: 53px;
+  margin-top: 4px;
   
   display: flex;
   flex-direction: row;
@@ -165,7 +166,6 @@ body {
   position: relative;
   width: 486px;
   height: 32px;
-  /* background-color: pink; */
   display: flex;
   justify-content: center;
 }
@@ -181,7 +181,6 @@ body {
   position: absolute;
   width: 62px;
   height: 32px;
-  /* background-color: blue; */
 }
 
 .p1 .losers_container {
@@ -200,10 +199,6 @@ body {
 .match {
   font-size: 20px;
   text-transform: uppercase;
-}
-
-.sponsor {
-  /* background: #ffb403; */
 }
 
 .p1 .sponsor {
@@ -269,26 +264,4 @@ body {
 .p2.twitter_container {
   right: 25px;
   background-color: var(--p2-score-bg-color);
-}
-
-.camera_container {
-  position: absolute;
-  width: 346px;
-  height: 193px;
-  bottom: 14px;
-
-  box-sizing: border-box;
-  border-width: 3px;
-  border-color: white;
-  border-style: solid;
-
-  border-radius: 10px;
-}
-
-.p1.camera_container {
-  left: 25px;
-}
-
-.p2.camera_container {
-  right: 25px;
 }
