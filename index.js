@@ -96,7 +96,7 @@ LoadEverything().then(() => {
       if (showFlag) {
         changeStylesheetRule(`.p${t + 1} .name_container`, "padding", "0 8px");
       } else {
-        changeStylesheetRule(`.p${t + 1} .name_container`, "padding", "0 12px");
+        changeStylesheetRule(`.p${t + 1} .name_container`, "padding", "0 10px");
       }
     });
   
