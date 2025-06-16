@@ -10,13 +10,13 @@ const overlayState = {
   savedMatchDisplayHash: "",
   validMatchModes: [],
 
-  matchDisplayModes: ["!bracket", "phase"],
+  matchDisplayModes: ["phase"],
   displayModes: ["twitter", "pronoun"]
 }
 
 function getMatchDisplayFieldMap(score) {
   return {
-    "!bracket": "!BRACKET",
+    "!bracket": "!bracket",
     "phase": score.phase,
     "match": score.match,
     "best_of_text": score.best_of_text,
@@ -29,7 +29,7 @@ function getPlayerDisplayFieldMap(player) {
       ? `<span class="twitter_logo"></span>@${player.twitter}`
       : "",
     "pronoun": player.pronoun
-      ? player.pronoun.toUpperCase()
+      ? player.pronoun
       : "",
   };
 }
