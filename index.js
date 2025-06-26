@@ -16,7 +16,6 @@ const overlayState = {
 
 function getMatchDisplayFieldMap(score) {
   return {
-    "!bracket": "!bracket",
     "phase": score.phase,
     "match": score.match,
     "best_of_text": score.best_of_text,
@@ -244,7 +243,7 @@ const toggleVisibility = (el, visible) => {
   if (!el) return;
 
   if (overlayState.firstTime) {
-    el.style.opacity = visible ? "1" : "0";
+    if (!visible) el.style.opacity = "0";
     return;
   }
 
