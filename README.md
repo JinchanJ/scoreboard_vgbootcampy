@@ -21,11 +21,11 @@ infoModes: ["startgg", "phase"];
 ```js
 function getInfoModesFieldMap(score) {
   return {
-    startgg: "START.GG/LINK",
-    phase: score.phase,
-    match: score.match,
-    best_of_text: score.best_of_text,
-    tournament_name: overlayState.data.tournamentInfo.tournamentName,
+    "startgg": "START.GG/LINK",
+    "phase": score.phase,
+    "match": score.match,
+    "best_of_text": score.best_of_text,
+    "tournament_name": overlayState.data.tournamentInfo.tournamentName,
   };
 }
 ```
@@ -35,7 +35,7 @@ function getInfoModesFieldMap(score) {
 1. Add a new mode to playerModes. We will add a mode called "seed" as an example:
 
 ```js
-displayModes: ["seed", "twitter", "pronoun"];
+playerModes: ["seed", "twitter", "pronoun"];
 ```
 
 2. Add what the mode will show in getPlayerFieldMap right below.
@@ -43,11 +43,13 @@ displayModes: ["seed", "twitter", "pronoun"];
 ```js
 function getPlayerFieldMap(player) {
   return {
-    seed: player.seed ? `SEED ${player.seed}` : "",
-    twitter: player.twitter
+    "seed": player.seed
+      ? `SEED ${player.seed}`
+      : "",
+    "twitter": player.twitter
       ? `<span class="twitter_logo"></span>@${player.twitter}`
       : "",
-    pronoun: player.pronoun ? player.pronoun.toUpperCase() : "",
+    "pronoun": player.pronoun ? player.pronoun.toUpperCase() : "",
   };
 }
 ```
