@@ -16,7 +16,7 @@ const ROTATION_INTERVAL = 5000;
 infoModes: ["startgg", "phase"];
 ```
 
-2. Add what that mode will show in getInfoModesFieldMap function.
+2. Add what that mode will show in the getInfoModesFieldMap function right below.
 
 ```js
 function getInfoModesFieldMap(score) {
@@ -38,7 +38,7 @@ function getInfoModesFieldMap(score) {
 displayModes: ["seed", "twitter", "pronoun"];
 ```
 
-2. Add what the mode will show in getPlayerFieldMap.
+2. Add what the mode will show in getPlayerFieldMap right below.
 
 ```js
 function getPlayerFieldMap(player) {
