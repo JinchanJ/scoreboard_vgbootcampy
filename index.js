@@ -1,5 +1,5 @@
 // How long it takes to update the information, in milliseconds. 10000 milliseconds = 10 seconds.
-const ROTATION_INTERVAL = 5000;
+const ROTATION_INTERVAL = 10000;
 
 const overlayState = {
   infoModesIndex: 0, // At what index of infoModes list we are at
@@ -10,7 +10,7 @@ const overlayState = {
   validInfoModes: [], // Info modes that have content to display
 
   infoModes: ["phase"],
-  playerModes: ["seed", "twitter", "pronoun", "nandemo"]
+  playerModes: ["twitter", "pronoun"]
 }
 
 function getInfoModesFieldMap(score) {
@@ -24,16 +24,15 @@ function getInfoModesFieldMap(score) {
 
 function getPlayerFieldMap(player) {
   return {
+    "seed": player.seed
+      ? `SEED ${player.seed}`
+      : "",
     "twitter": player.twitter
       ? `<span class="twitter_logo"></span>@${player.twitter}`
       : "",
     "pronoun": player.pronoun
       ? player.pronoun
       : "",
-    "seed": player.seed
-      ? `SEED ${player.seed}`
-      : "",
-    "nandemo": "nandemo"
   };
 }
 
