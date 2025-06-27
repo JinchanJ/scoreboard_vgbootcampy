@@ -72,7 +72,9 @@ function getPlayerFieldMap(player) {
 12. Add the scene where you set up the player cams to this scene where you have the scoreboard overlay and move it behind the CameraBorders.png. You should now have the player cams within the borders!
 
 ## Recommendation
-It might be good to change line 286 in the FitText method in /layout/include/global.js from this:
+It is recommended to turn on the "Shutdown source when not visible" and "Refresh browser when scene becomes active" properties so that the starting animation plays and this scoreboard is updated properly whenever the scene with this scoreboard becomes active.
+
+Also, it might be good to change line 286 in the FitText method in /layout/include/global.js from this:
 ```js
 textElement.css("transform", "scaleX(" + scaleX + ")");
 ```
