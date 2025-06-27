@@ -80,4 +80,4 @@ to this:
 ```js
 textElement.css("transform", "scale(" + scaleX + ")");
 ```
-so that the texts do not appear to be squished when they are really long.
+so that the texts do not appear to be squished horizontally when they are really long.
