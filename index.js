@@ -253,38 +253,6 @@ const toggleVisibility = (el, visible) => {
   });
 };
 
-// const formatPlayerOverlayContent = (player) => {
-//   const player1 = overlayState.data.score[window.scoreboardNumber].team["1"].player["1"];
-//   const player2 = overlayState.data.score[window.scoreboardNumber].team["2"].player["1"];
-//   const allModes = overlayState.playerModes;
-
-//   const validModes = allModes.filter(mode => {
-//     const f1 = getPlayerFieldMap(player1)[mode];
-//     const f2 = getPlayerFieldMap(player2)[mode];
-//     return !!f1 || !!f2;
-//   });
-
-//   if (validModes.length === 0) return { content: "", modeUsed: null };
-
-//   const modeIndex = overlayState.playerModesIndex % validModes.length;
-//   const currentMode = validModes[modeIndex];
-//   const playerFields = getPlayerFieldMap(player);
-
-//   // Try current mode
-//   if (playerFields[currentMode]) {
-//     return { content: playerFields[currentMode], modeUsed: currentMode };
-//   }
-
-//   // 🔁 Fallback to next available mode
-//   for (const mode of validModes) {
-//     if (playerFields[mode]) {
-//       return { content: playerFields[mode], modeUsed: mode };
-//     }
-//   }
-
-//   return { content: "", modeUsed: null };
-// };
-
 const formatPlayerOverlayContent = (player) => {
   const player1 = overlayState.data.score[window.scoreboardNumber].team["1"].player["1"];
   const player2 = overlayState.data.score[window.scoreboardNumber].team["2"].player["1"];
