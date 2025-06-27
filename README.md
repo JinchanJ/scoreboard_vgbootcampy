@@ -53,3 +53,14 @@ function getPlayerFieldMap(player) {
   };
 }
 ```
+
+## Recommendation
+It might be good to change line 286 in the FitText method in /layout/include/global.js from this:
+```js
+textElement.css("transform", "scaleX(" + scaleX + ")");
+```
+to this:
+```js
+textElement.css("transform", "scale(" + scaleX + ")");
+```
+so that the texts do not appear to be squished when they are really long.
