@@ -1,4 +1,7 @@
 # scoreboard_vgbootcampy
+A VGBC-style scoreboard overlay built for TournamentStreamHelper for educational purposes. Made as a practice to learn how to use JavaScript, HTML, and CSS.
+
+![Preview Image](/index_preview.png)
 
 ## How to change the rotation interval (time it takes to show the next info)
 
@@ -65,8 +68,8 @@ function getPlayerFieldMap(player) {
 8. For the Path, click on Browse and select CameraMask.png.
 9. Click Close. The CameraMask.png should now be applied to the scene.
 10. Go to the scene where you have the scoreboard overlay. Create one if you do not have one.
-11. Add CameraBorders.png as an Image to the scene where you have the scoreboard overlay.
-12. Add the scene where you set up the player cams to this scene and move it behind the CameraBorders.png. You should now have the player cams within the borders!
+11. In this scene where you have the scoreboard overlay, add CameraBorders.png as an Image.
+12. Add the scene where you set up the player cams to this scene where you have the scoreboard overlay and move it behind the CameraBorders.png. You should now have the player cams within the borders!
 
 ## Recommendation
 It might be good to change line 286 in the FitText method in /layout/include/global.js from this:
