@@ -54,6 +54,20 @@ function getPlayerFieldMap(player) {
 }
 ```
 
+## How to set up the player cams in OBS
+1. Create a new scene.
+2. In this new scene, add CameraBorders.png as an Image. We will use this as a guide to adjust the size the player cams.
+3. Add Video Capture Device for a player.
+4. Adjust the size of the Video Capture Device so it covers the area within one of the borders.
+5. Repeat steps 3-4 for the other player.
+6. Right click on the scene and select Filters.
+7. Click on + and then select Image Mask/Blend.
+8. For the Path, click on Browse and select CameraMask.png.
+9. Click Close. The CameraMask.png should now be applied to the scene.
+10. Go to the scene where you have the scoreboard overlay. Create one if you do not have one.
+11. Add CameraBorders.png as an Image to the scene where you have the scoreboard overlay.
+12. Add the scene where you set up the player cams to this scene and move it behind the CameraBorders.png. You should now have the player cams within the borders!
+
 ## Recommendation
 It might be good to change line 286 in the FitText method in /layout/include/global.js from this:
 ```js
